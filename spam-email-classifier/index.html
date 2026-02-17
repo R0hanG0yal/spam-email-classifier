@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Spam Email Classifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">AI Spam Detector</div>
+    <ul>
+        <li><button onclick="showPage('home')">Home</button></li>
+        <li><button onclick="showPage('classify')">Classify</button></li>
+        <li><button onclick="showPage('analytics')">Analytics</button></li>
+        <li><button onclick="showPage('model')">About Model</button></li>
+    </ul>
+</nav>
+
+<!-- HOME PAGE -->
+<section id="home" class="page active">
+    <h1>AI Spam Email Classifier</h1>
+    <p>
+        An explainable NLP-based system for detecting spam messages using
+        keyword frequency analysis, confidence scoring, and user-friendly analytics.
+    </p>
+    <button class="primary" onclick="showPage('classify')">
+        Start Classification
+    </button>
+</section>
+
+<!-- CLASSIFY PAGE -->
+<section id="classify" class="page">
+    <h2>Classify Message</h2>
+
+    <label>Paste Email / Message</label>
+    <textarea id="message" placeholder="Paste your message here..."></textarea>
+
+    <!-- Example Buttons -->
+    <div style="margin-top:10px;">
+        <button onclick="loadExample('spam')">Load Spam Example</button>
+        <button onclick="loadExample('normal')">Load Normal Example</button>
+    </div>
+
+    <!-- Explainable Mode -->
+    <label style="margin-top:15px;">
+        <input type="checkbox" id="explainToggle" checked>
+        Enable Explainable Mode
+    </label>
+
+    <button class="primary" onclick="classify()">Analyze Message</button>
+
+    <!-- Result -->
+    <div id="result" class="result-box">Waiting for input</div>
+
+    <!-- Confidence -->
+    <div id="confidence"></div>
+
+    <!-- Confidence Progress Bar -->
+    <div style="background:#ddd; border-radius:8px; overflow:hidden; margin-top:8px;">
+        <div id="confidenceBar" style="height:12px; width:0%; background:#203a43;"></div>
+    </div>
+
+    <div id="analysis"></div>
+</section>
+
+<!-- ANALYTICS PAGE -->
+<section id="analytics" class="page">
+    <h2>Message Analytics</h2>
+
+    <p><strong>Message Length:</strong> <span id="length">-</span></p>
+    <p><strong>Spam Keyword Count:</strong> <span id="keywordCount">-</span></p>
+    <p><strong>Keyword Density:</strong> <span id="density">-</span></p>
+
+    <h3>Highlighted Spam Keywords</h3>
+    <div id="highlightedText" class="highlight-box">
+        Analysis will appear here
+    </div>
+
+    <h3>Classification History (Last 5)</h3>
+    <ul id="history"></ul>
+</section>
+
+<!-- MODEL PAGE -->
+<section id="model" class="page">
+    <h2>About the Model</h2>
+
+    <p>
+        This system uses a rule-based Natural Language Processing (NLP) approach
+        inspired by common spam patterns found in public SMS and email datasets.
+    </p>
+
+    <p>
+        The classifier evaluates keyword frequency, keyword density, and message
+        length to generate an explainable prediction with a confidence score.
+    </p>
+
+    <h3>Model Limitations</h3>
+    <ul>
+        <li>Keyword-based approach without semantic understanding</li>
+        <li>Language-dependent (English-focused)</li>
+        <li>Cannot detect context-aware or adversarial spam</li>
+    </ul>
+
+    <h3>Future Improvements</h3>
+    <ul>
+        <li>Supervised ML models (Naive Bayes, Logistic Regression)</li>
+        <li>Context-aware NLP models</li>
+        <li>Dataset-driven training</li>
+    </ul>
+</section>
+
+<footer>
+    <p>Mini AI Project | Computer Science (AI Specialization)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
